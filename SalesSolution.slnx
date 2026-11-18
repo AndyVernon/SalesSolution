@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="DailySalesProcessor.Function/DailySalesProcessor.Function.csproj" Id="3a97d8dd-f979-49de-ac7e-21a3f4732671" />
+  <Project Path="Sales.Contracts/Sales.Contracts.csproj" Id="aa1a74e1-da55-42dc-995d-c6268192832b" />
+  <Project Path="SalesProcessing.Api/SalesProcessing.Api.csproj" />
+  <Project Path="SalesSubmission.Api/SalesSubmission.Api.csproj" Id="2fdc4ff1-4e06-4d86-a12f-e8c4dd3ad51a" />
+</Solution>

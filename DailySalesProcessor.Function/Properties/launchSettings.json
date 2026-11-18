@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "DailySalesProcessor.Function": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7196",
+      "launchBrowser": false
+    }
+  }
+}
