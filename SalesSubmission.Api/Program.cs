@@ -4,9 +4,12 @@ using Azure.Storage.Queues;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var storageConnection = builder.Configuration["StorageConnection"] 
+var storageConnection = builder.Configuration.GetConnectionString("AzureStorage") 
     ?? throw new InvalidOperationException("StorageConnection is not configured.");
-builder.Services.AddSingleton(_ => new QueueClient(storageConnection, "daily-sales"));
+var dailySalesSubmission = builder.Configuration["QueueSettings:Queues:DailySalesSubmission"]
+    ?? throw new InvalidOperationException("QueueSettings:Queues:DailySalesSubmission is not configured.");
+var queueOptions = new QueueClientOptions(QueueClientOptions.ServiceVersion.V2026_06_06);
+builder.Services.AddSingleton(_ => new QueueClient(storageConnection, dailySalesSubmission, queueOptions));
 builder.Services.AddScoped<ISubmitSalesService, SubmitSalesService>();
 
 builder.Services.AddControllers();

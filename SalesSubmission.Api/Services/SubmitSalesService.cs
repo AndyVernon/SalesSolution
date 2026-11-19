@@ -25,7 +25,7 @@ namespace SalesSubmission.Api.Services
             try
             {
                 var message = JsonSerializer.Serialize(salesRequest);
-                var result = await _queueClient.SendMessageAsync(message, cancellationToken);
+                var result = await _queueClient.SendMessageAsync(message, cancellationToken: cancellationToken);
                 var resultStatus = result.GetRawResponse().Status;
                 _logger.LogInformation(
                     "Queued sales submission. Status: {Status}, MessageId: {MessageId}, InsertedTime: {InsertedTime}",
@@ -35,7 +35,7 @@ namespace SalesSubmission.Api.Services
 
                 return new BaseResponse
                 {
-                    StatusCode = resultStatus
+                    MessageId = result.Value.MessageId
                 };  
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace SalesSubmission.Api.Services
                 _logger.LogError(ex, "Error submitting sales request to the queue.");
                 return new BaseResponse
                 {
-                    StatusCode = StatusCodes.Status500InternalServerError
+                    MessageId = null
                 };
             }
         }

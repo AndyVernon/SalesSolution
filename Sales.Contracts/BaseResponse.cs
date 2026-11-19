@@ -2,6 +2,6 @@
 {
     public class BaseResponse
     {
-        public int StatusCode { get; set; }
+        public string? MessageId { get; set; }
     }
 }

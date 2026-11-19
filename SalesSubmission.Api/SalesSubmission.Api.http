@@ -1,6 +1,13 @@
-@SalesSubmission.Api_HostAddress = http://localhost:5080
+@SalesSubmission.Api_HostAddress = https://localhost:7230
 
-GET {{SalesSubmission.Api_HostAddress}}/weatherforecast/
+POST {{SalesSubmission.Api_HostAddress}}/api/submitsales/submit
+Content-Type: application/json
 Accept: application/json
+
+{
+  "customerId": "11152222-1111-1111-1111-111111111111",
+  "branchId": "22222222-2222-2222-2222-222222222222",
+  "amount": 26.26
+}
 
 ###
