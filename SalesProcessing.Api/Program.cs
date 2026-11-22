@@ -1,6 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using SalesProcessing.Api.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<SalesDbContext>(options => 
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("SalesDatabase")));
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
