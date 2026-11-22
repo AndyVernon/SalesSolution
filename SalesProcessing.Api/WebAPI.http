@@ -1,6 +1,16 @@
-@WebAPI_HostAddress = http://localhost:5273
+@WebAPI_HostAddress = https://localhost:7135
 
-GET {{WebAPI_HostAddress}}/api/locations/
+POST {{WebAPI_HostAddress}}/api/sales/dailysales
 Accept: application/json
+
+{
+  "Id":"b170b88e-bcd5-49f4-b8ed-0091258f9eb6",
+  "SalesDate":"2026-11-20T00:00:00",
+  "CustomerId":"55552222-1111-1111-1111-111111111111",
+  "BranchId":"77777777-2222-2222-2222-222222222222",
+  "Amount":230.22,
+  "SubmissionDate":"2026-11-22T21:47:47.0530999Z"
+}
+
 
 ###
