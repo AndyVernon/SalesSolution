@@ -1,4 +1,4 @@
-﻿namespace Sales.Contracts
+﻿namespace SalesSubmission.Api.Models
 {
     public class BaseResponse
     {

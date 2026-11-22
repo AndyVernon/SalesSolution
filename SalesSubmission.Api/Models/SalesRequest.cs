@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sales.Contracts
+namespace SalesSubmission.Api.Models
 {
     public class SalesRequest
     {
+        [Required]
+        public DateTime Date { get; set; }
         [Required]
         public Guid? CustomerId { get; set; }
         [Required]

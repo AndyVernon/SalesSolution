@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sales.Contracts;
+using SalesSubmission.Api.Models;
 using SalesSubmission.Api.Services;
 
 namespace SalesSubmission.Api.Controllers
