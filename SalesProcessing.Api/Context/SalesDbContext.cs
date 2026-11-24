@@ -9,5 +9,6 @@ namespace SalesProcessing.Api.Context
         }
 
         public DbSet<DailySales> DailySales { get; set; }
+        public DbSet<WeeklySales> WeeklySales { get; set; }
     }
 }
