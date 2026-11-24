@@ -25,7 +25,7 @@ public class ProcessSalesQueue
     {
         _logger.LogInformation("C# Queue trigger function processed: {messageText}", dailySales.MessageText);
         var client = _httpClientFactory.CreateClient("SalesProcessing");
-        var endpoint = _configuration["SalesProcessing:SubmitSalesEndpoint"];
+        var endpoint = _configuration["SalesProcessing:SubmitDailySalesEndpoint"];
         var content = new StringContent(
             dailySales.MessageText,
             Encoding.UTF8,

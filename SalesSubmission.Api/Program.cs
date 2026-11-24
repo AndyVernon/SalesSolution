@@ -1,5 +1,6 @@
 using SalesSubmission.Api.Services;
 using Azure.Storage.Queues;
+using Azure.Messaging.ServiceBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,12 @@ var dailySalesSubmission = builder.Configuration["QueueSettings:Queues:DailySale
 var queueOptions = new QueueClientOptions(QueueClientOptions.ServiceVersion.V2026_06_06);
 builder.Services.AddSingleton(_ => new QueueClient(storageConnection, dailySalesSubmission, queueOptions));
 builder.Services.AddScoped<ISubmitSalesService, SubmitSalesService>();
+
+// Add services for service bus
+var serviceBusConnection = builder.Configuration.GetConnectionString("AzureServiceBus")
+    ?? throw new InvalidOperationException("AzureServiceBus is not configured.");
+builder.Services.AddSingleton(_ => new ServiceBusClient(serviceBusConnection));
+builder.Services.AddSingleton(sp => sp.GetRequiredService<ServiceBusClient>().CreateSender("sales-submission"));
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
