@@ -10,5 +10,11 @@ namespace SalesProcessing.Api.Context
 
         public DbSet<DailySales> DailySales { get; set; }
         public DbSet<WeeklySales> WeeklySales { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DailySales>().Property(sale => sale.Amount).HasPrecision(18, 2);
+            modelBuilder.Entity<WeeklySales>().Property(sale => sale.Amount).HasPrecision(18, 2);
+        }
     }
 }
